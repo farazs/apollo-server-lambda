@@ -1,6 +1,4 @@
-<<<<<<< HEAD
 # apollo-server-lambda
-=======
 ---
 title: Lambda
 description: Setting up Apollo Server with AWS Lambda
