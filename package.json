@@ -16,8 +16,12 @@
     "url": "https://github.com/apollographql/apollo-server/tree/master/packages/apollo-server-lambda"
   },
   "scripts": {
+    "compile": "tsc --build tsconfig.json",
     "clean": "git clean -dfqX -- ./node_modules **/{dist,node_modules}/",
-    "compile": "tsc --build tsconfig.json"
+    "compile:clean": "tsc --build tsconfig.json --clean",
+    "watch": "tsc --build tsconfig.json --watch",
+    "release": "npm run clean && npm ci && lerna publish --exact",
+    "postinstall": "lerna run prepare && npm run compile",
   },
   "homepage": "https://github.com/apollographql/apollo-server#readme",
   "bugs": {
@@ -49,6 +53,7 @@
     "@types/ws": "6.0.1",
     "graphql": "14.0.2",
     "graphql-tag": "2.10.0",
-    "graphql-tools": "4.0.3"
+    "graphql-tools": "4.0.3",
+    "lerna": "3.4.3",
   }
 }
