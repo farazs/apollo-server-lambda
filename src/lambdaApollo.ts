@@ -1,15 +1,16 @@
-import lambda from 'aws-lambda';
+import * as lambda from 'aws-lambda';
 import {
   GraphQLOptions,
-  ServerOptionsFunction,
   HttpQueryError,
   runHttpQuery,
 } from 'apollo-server-core';
 import { Headers } from 'apollo-server-env';
 
-export type LambdaGraphQLOptionsFunction = ServerOptionsFunction<
-  [lambda.APIGatewayProxyEvent, lambda.Context]
->;
+export interface LambdaGraphQLOptionsFunction {
+  (event: lambda.APIGatewayProxyEvent, context: lambda.Context):
+    | GraphQLOptions
+    | Promise<GraphQLOptions>;
+}
 
 export function graphqlLambda(
   options: GraphQLOptions | LambdaGraphQLOptionsFunction,
@@ -51,20 +52,11 @@ export function graphqlLambda(
       },
     }).then(
       ({ graphqlResponse, responseInit }) => {
-        let graphqlResponseJson = JSON.parse(graphqlResponse);
-        if(graphqlResponseJson.errors != undefined) {
-          callback(null, {
-              body: graphqlResponse,
-              statusCode: 429,
-              headers: responseInit.headers,
-          });
-        } else {
-          callback(null, {
-            body: graphqlResponse,
-            statusCode: 200,
-            headers: responseInit.headers,
-          });
-        }
+        callback(null, {
+          body: graphqlResponse,
+          statusCode: 200,
+          headers: responseInit.headers,
+        });
       },
       (error: HttpQueryError) => {
         if ('HttpQueryError' !== error.name) return callback(error);
