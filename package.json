@@ -15,6 +15,10 @@
     "type": "git",
     "url": "https://github.com/apollographql/apollo-server/tree/master/packages/apollo-server-lambda"
   },
+  "scripts": {
+    "clean": "git clean -dfqX -- ./node_modules **/{dist,node_modules}/",
+    "compile": "tsc --build tsconfig.json"
+  },
   "homepage": "https://github.com/apollographql/apollo-server#readme",
   "bugs": {
     "url": "https://github.com/apollographql/apollo-server/issues"
@@ -25,12 +29,26 @@
     "node": ">=6"
   },
   "dependencies": {
-    "@apollographql/graphql-playground-html": "^1.6.4",
-    "apollo-server-core": "^2.1.0",
-    "apollo-server-env": "^2.0.3",
-    "graphql-tools": "^4.0.0"
+    "@apollographql/graphql-playground-html": "latest",
+    "apollo-server-core": "latest",
+    "apollo-server-env": "latest",
+    "graphql-tools": "latest"
   },
   "peerDependencies": {
     "graphql": "^0.12.0 || ^0.13.0 || ^14.0.0"
+  },
+  "devDependencies": {
+    "@types/async-retry": "1.2.1",
+    "@types/aws-lambda": "8.10.15",
+    "@types/graphql": "14.0.3",
+    "@types/node": "10.12.2",
+    "@types/node-fetch": "2.1.2",
+    "@types/request": "2.48.0",
+    "@types/request-promise": "4.1.42",
+    "@types/type-is": "1.6.2",
+    "@types/ws": "6.0.1",
+    "graphql": "14.0.2",
+    "graphql-tag": "2.10.0",
+    "graphql-tools": "4.0.3"
   }
 }
