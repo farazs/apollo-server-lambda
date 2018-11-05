@@ -19,7 +19,8 @@
     "compile": "tsc --build tsconfig.json",
     "clean": "git clean -dfqX -- ./node_modules **/{dist,node_modules}/",
     "compile:clean": "tsc --build tsconfig.json --clean",
-    "watch": "tsc --build tsconfig.json --watch"
+    "watch": "tsc --build tsconfig.json --watch",
+    "postinstall": "npm run compile"
   },
   "homepage": "https://github.com/apollographql/apollo-server#readme",
   "bugs": {
