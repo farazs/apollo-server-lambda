@@ -1,1 +1,28 @@
-node_modules/**
+lib-cov
+*.seed
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+*.gz
+
+pids
+logs
+results
+
+### node ##
+node_modules
+
+### jest ###
+/coverage/
+
+### editors ###
+.vscode
+.idea
+
+### prefer package-lock over yarn.lock
+### all developer should use npm over yarn to install dependencies
+yarn.lock
+
+*.iml

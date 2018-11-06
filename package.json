@@ -96,7 +96,6 @@
   "scripts": {
     "clean": "rm -rf dist",
     "compile": "tsc",
-    "prepare": "npm run clean && npm run compile",
-    "postinstall": "npm run clean && npm run compile"
+    "prepare": "npm run clean && npm run compile"
   }
 }
